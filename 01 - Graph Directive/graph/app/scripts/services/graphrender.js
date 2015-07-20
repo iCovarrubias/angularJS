@@ -19,10 +19,10 @@ angular.module('graphApp')
 			ctx.fillRect(10, 10, 100, 100);
 		}
 
-		function renderPie(ctx, data) {
+		function renderPie(elem, dataTable, opts) {
 			$log.log("rendering pie");
-			ctx.fillStyle = "#801B15";
-			ctx.fillRect(10, 10, 100, 100);
+			var chart = new google.visualization.PieChart(elem);
+			chart.draw(dataTable, opts);
 		}
 
 		function renderLineGraph(ctx, data) {
@@ -31,37 +31,51 @@ angular.module('graphApp')
 			ctx.fillRect(10, 10, 100, 100);
 		}
 
-		this.draw = function(canvas, data) {
+		this.draw = function(elem, data, type) {
 			//validation
-			if(!(canvas instanceof HTMLCanvasElement)){
-				throw new Error("Not an instance of Canvas");
-			}
+			// if(!(canvas instanceof HTMLCanvasElement)){
+			// 	throw new Error("Not an instance of Canvas");
+			// }
 
 			if(!data)
 			{
 				$log.error("No data to draw the graph");
 				return;
-			} else if(!data.type)
-			{
-				$log.error('Not enough data to draw the graph, "type" missing');
-				return;
-			}
+			} 
 
 			//TODO, validate data structure
-			$log.log("data is type:" + data.type);
+			$log.log("chart is type:" + type);
+
+			//prepare info in google chart style
+			if(google && google.visualization)
+			{
+				var dataTable = new google.visualization.DataTable();
+				//columns
+				for(var i=0; i<data.columns.length; i++)
+				{
+					$log.log("add columns:", data.columns[i]);
+					dataTable.addColumn.apply(dataTable, data.columns[i]);
+				}
+
+				//rows
+				dataTable.addRows(data.rows);
+				
+			} else {
+				throw new Error("Google Charts was not loaded");
+			}
+			
+
 
 			//call a different render function depending on type
-			var ctx = canvas.getContext("2d");
-
-			switch(data.type){
+			switch(type){
 				case "bars":
-					renderBars(ctx, data);
+					renderBars(elem, dataTable, data.options);
 					break;
 				case "pie":
-					renderPie(ctx, data);
+					renderPie(elem, dataTable, data.options);
 					break;
 				case "lines":
-					renderLineGraph(ctx, data);
+					renderLineGraph(elem, dataTable, data.options);
 					break;
 				default:
 					$log.error("Invalid graphic type");
