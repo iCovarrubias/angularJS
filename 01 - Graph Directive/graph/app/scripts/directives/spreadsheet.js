@@ -9,7 +9,7 @@
 angular.module('graphApp')
   .directive('spreadsheet', function () {
     return {
-      template: '<div></div>',
+      template: '<div id="spreadSheetContainer"></div>',
       restrict: 'E',
       link: function postLink(scope, element, attrs) {
         element.text('this is the spreadsheet directive');
