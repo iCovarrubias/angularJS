@@ -13,10 +13,10 @@ angular.module('graphApp')
 		//params: 
 		//	1 - a canvas context
 		//	2 - the graph data
-		function renderBars(ctx, data) {
+		function renderBars(elem, dataTable, opts) {
 			$log.log("rendering bars");
-			ctx.fillStyle = "#804715";
-			ctx.fillRect(10, 10, 100, 100);
+			var chart = new google.visualization.BarChart(elem);
+			chart.draw(dataTable, opts);
 		}
 
 		function renderPie(elem, dataTable, opts) {
@@ -25,10 +25,10 @@ angular.module('graphApp')
 			chart.draw(dataTable, opts);
 		}
 
-		function renderLineGraph(ctx, data) {
+		function renderLineGraph(elem, dataTable, opts) {
 			$log.log("rendering line");
-			ctx.fillStyle = "#10631B";
-			ctx.fillRect(10, 10, 100, 100);
+			var chart = new google.visualization.LineChart(elem);
+			chart.draw(dataTable, opts);
 		}
 
 		this.draw = function(elem, data, type) {
