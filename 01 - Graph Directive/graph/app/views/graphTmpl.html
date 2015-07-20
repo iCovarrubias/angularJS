@@ -1,0 +1,28 @@
+<!--
+<style>
+	.graph-canvas {
+		border: 1px grey solid;
+		background-color: #eee;
+		padding: 10px;
+	}
+	.graph-canvas-cont {
+		display: inline-block;
+		clear: right;
+		background-color: white;
+	}
+	.graph-vertical-text {
+	    transform: rotate(-90deg);
+	    /*transform-origin: left top 0;*/
+	    style: inline-block;
+	}
+
+</style>
+-->
+<div class="graph-canvas">
+	<h3><span class="label label-primary">{{gdata.title}}</span></h3>
+	<!-- <div class="graph-vertical-text" >Y: {{gdata.yAxisLbl}}</div> -->
+	<div class="graph-canvas-cont">
+		<div id="graphCanvas"></div>
+	</div>
+	<div><h4><span class="label label-default">{{gdata.xAxisLbl}}</span></h4></div>
+</div>
