@@ -47,9 +47,10 @@ angular.module('graphApp')
 			$log.log("chart is type:" + type);
 
 			//prepare info in google chart style
+			var dataTable;
 			if(google && google.visualization)
 			{
-				var dataTable = new google.visualization.DataTable();
+				dataTable = new google.visualization.DataTable();
 				//columns
 				for(var i=0; i<data.columns.length; i++)
 				{
@@ -80,5 +81,5 @@ angular.module('graphApp')
 				default:
 					$log.error("Invalid graphic type");
 			}
-		}
+		};
 	});

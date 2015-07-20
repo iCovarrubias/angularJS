@@ -9,8 +9,8 @@
 angular.module('graphApp')
   .directive('graph', function (graphRender) {
     return {
-      // template: '<div></div>',
-      templateUrl: '../../views/graphTmpl.html',
+      template: '<div id="graphCanvas"></div>',
+      // templateUrl: '../../views/graphTmpl.html',
       restrict: 'E',
       scope: {
       	gData: "=",
@@ -21,8 +21,12 @@ angular.module('graphApp')
         //copy so we avoid accidentally modifying the original data
         // var data = angular.copy(scope.gData);
 
+        console.log("I'm a chart: " + scope.gType);
+
         if(!scope.gType)
+        {
           scope.gType = "pie";
+        }
 
         //not a canvas, its where the chart will be displayed
         var canvas = elem.find('#graphCanvas')[0];
@@ -33,13 +37,13 @@ angular.module('graphApp')
 
         scope.$watch('gData', function(newVal, oldVal) {
           // if(angular.isUndefined(oldVal))
-          console.log('watch on action', oldVal, newVal);
+          console.log('watch on action ' + scope.gType, oldVal, newVal);
           if(!angular.isUndefined(newVal))
           {
             console.log('watch me draw');
             graphRender.draw(canvas, scope.gData, scope.gType);    
           }
-        });
+        }, true);
         
       }
     };
