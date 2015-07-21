@@ -23,8 +23,8 @@ angular.module('graphApp')
 		$scope.ssData[1][4]++;
 	};
 
-	$scope.valueInScope = function()
-	{
-		console.log('The value in the scope is: ' + $scope.ssData[1][4]);
-	};
+	// $scope.valueInScope = function()
+	// {
+	// 	console.log('The value in the scope is: ' + $scope.ssData[1][4]);
+	// };
   });

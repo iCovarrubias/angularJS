@@ -1,0 +1,25 @@
+Problems found during development
+   
+1. The charts directive
+	+ Loading with the google loader can be not so cool, it's bugged,
+		in the ChartService.js we add a "callback" parameter to the load
+		method to fix it, if the parameter is ommited, then DataTable is not loaded.
+
+	+ Without knowing about the previous issue with google loader, it was hard
+		to find a good place for the google.load method to live, see main.js
+
+	+ Another possible solution was to load the google loader with the "?autoload" parameter,
+		however, we can't relly on this one, it is possible that our directives load 
+		faster than the google charts module, breaking our code.
+
+	+ Clicking the RESET button doesn't really return to the original data, it actually assigns
+	 a new object to the data, which is expected, to demonstrate how watchers behave.
+
+2. The spreadsheets one
+	+ I keep saying stylesheets instead of spreadsheets
+	+ Finding one that didn't require google spreadsheets
+	+ There are some libraries that implement this functionality but relly on google spreadsheets
+	+ There's SpreadJS but it requires registration and it seems that's not free, so I didn't bother
+	+ Updating the value in the scope (with a click) correctly udpdates the component;
+		updating the value manually in the view affects the scope, however, bindings to 
+		parts of the data array don't get updated (see directives/spreadsheet.js)

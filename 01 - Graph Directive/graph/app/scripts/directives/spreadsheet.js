@@ -27,7 +27,20 @@ angular.module('graphApp')
           minSpareRows: 1,
           rowHeaders: true,
           colHeaders: true,
-          contextMenu: true
+          contextMenu: true,
+          afterChange: function(changes) {
+            if(changes){
+              //isma, when we manually change something in the spreadsheet
+              // the scope gets updated but not the views
+              // call apply on ssData to update the views
+              var col = changes[0][0],
+                  row = changes[0][1],              
+                  val = changes[0][3];
+              scope.$apply(function(){
+                scope.ssData[col][row] = val;  
+              });
+            }
+          }
         });
         scope.$watch('ssData', function(newVal){
           if(newVal && hot)
