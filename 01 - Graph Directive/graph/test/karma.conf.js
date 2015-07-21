@@ -25,6 +25,10 @@ module.exports = function(config) {
       'bower_components/jquery/dist/jquery.js',
       'bower_components/angular/angular.js',
       'bower_components/bootstrap/dist/js/bootstrap.js',
+      'bower_components/zeroclipboard/dist/ZeroClipboard.js',
+      'bower_components/moment/moment.js',
+      'bower_components/pikaday/pikaday.js',
+      'bower_components/handsontable/dist/handsontable.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

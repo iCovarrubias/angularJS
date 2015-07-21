@@ -1,14 +1,25 @@
 <div class="panel">
-<div class="panel-title">
-	<h2>Charts Directive</h2>
+	<div class="panel-title">
+		<h2>Charts Directive</h2>
+	</div>
+	<div class="panel-body">
+		<graph g-data="pieData" g-type="pie"></graph>
+		<graph g-data="barData" g-type="bars"></graph>
+		<graph g-data="lineData" g-type="lines"></graph>
+	</div>
+	<div class="panel-footer">
+		<button class="btn btn-primary" ng-click="reset()" >Reset</button>
+		<button class="btn btn-primary" ng-click="addOne()" >Add One</button>
+	</div>
 </div>
-<div class="panel-body">
-	<graph g-data="pieData" g-type="pie"></graph>
-	<graph g-data="barData" g-type="bars"></graph>
-	<graph g-data="lineData" g-type="lines"></graph>
-</div>
-<div class="panel-footer">
-	<button class="btn btn-primary" ng-click="reset()" >Reset</button>
-	<button class="btn btn-primary" ng-click="addOne()" >Add One</button>
-</div>
-</div>
+
+<!-- <div class="panel" ng-controller="SpreadSheetCtrl">
+	<div class="panel-title">
+		<h2>SpreadSheets Directive</h2>
+	</div>
+	<div class="panel-body">
+		<spreadsheet ss-data="ssData"></spreadsheet>
+	</div>
+	<div class="panel-footer">
+	</div>
+</div> -->

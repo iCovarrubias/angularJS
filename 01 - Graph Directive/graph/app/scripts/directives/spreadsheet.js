@@ -9,10 +9,26 @@
 angular.module('graphApp')
   .directive('spreadsheet', function () {
     return {
-      template: '<div id="spreadSheetContainer"></div>',
+      template: '<div></div>',
       restrict: 'E',
-      link: function postLink(scope, element, attrs) {
-        element.text('this is the spreadsheet directive');
+      scope: {
+      	ssData: "="
+      },
+      link: function (scope, elem) {
+
+            var container = elem.find('div')[0];
+		    if(!container)
+		    {
+		      throw new Error("There was a problem loading the template");
+		    }
+
+			var hot = new Handsontable(container, {
+				data: scope.ssData,
+				minSpareRows: 1,
+				rowHeaders: true,
+				colHeaders: true,
+				contextMenu: true
+			});
       }
     };
   });
