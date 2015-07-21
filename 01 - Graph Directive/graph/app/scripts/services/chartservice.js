@@ -12,7 +12,7 @@ angular.module('graphApp')
     // Public API here
     return {
       loadGoogleVisualization: function () {
-        console.log('trying to load google visualization');
+        // console.log('trying to load google visualization');
         try {
           google.load('visualization', '1', {
             'callback':'console.log(\'success\');', 

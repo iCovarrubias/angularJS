@@ -6,9 +6,12 @@ describe('Service: graphRender', function () {
   beforeEach(module('graphApp'));
 
   // instantiate service
-  var graphRender;
-  beforeEach(inject(function (_graphRender_) {
+  var graphRender, chartService;
+
+  beforeEach(inject(function (_graphRender_, _ChartService_) {
     graphRender = _graphRender_;
+    chartService = _ChartService_; 
+    // googleLoaded = chartService.loadGoogleVisualization();
   }));
 
   it('should do something', function () {

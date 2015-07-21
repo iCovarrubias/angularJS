@@ -18,7 +18,7 @@ angular.module('graphApp')
 		{
 			google.setOnLoadCallback(function() {
 				if(google.visualization.DataTable)
-				{
+				{ 
 					$scope.$apply(function(){
 						$scope.pieData = {
 							rows: [
@@ -64,22 +64,6 @@ angular.module('graphApp')
 					
 			});
 		}
-		// function loadCallback() {
-			// var data = new google.visualization.DataTable();
-
-			// $scope.$apply(function() {
-				
-			// });
-		// }
-		// google.setOnLoadCallback(loadCallback);
-
-		
-
-    	// $scope.barData = $scope.pieData;
-
-
-    	
-
 
     	$scope.reset = function(){
     		//isma, this replaces the old pieData object
@@ -106,13 +90,13 @@ angular.module('graphApp')
     		//isma, probabbly going to break if pieData.rows doesn't exist
     		//anyways this is only to demonstrate that the chart is correctly updated
     		// $scope.$apply(function()
-    		{
-	    		for(var i=0; i < $scope.pieData.rows.length; i++)
-	    		{
-	    			$scope.pieData.rows[i][1]++;
-	    		}
-	    		console.log($scope.pieData.rows);
-    		}
+    		// {
+	    		// for(var i=0; i < $scope.pieData.rows.length; i++)
+	    		// {
+	    			$scope.pieData.rows[2][1]++;
+	    		// }
+	    		// console.log($scope.pieData.rows);
+    		// }
     		// );
     	};
   });

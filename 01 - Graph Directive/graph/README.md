@@ -25,6 +25,7 @@ google.load('visualization', '1.0', { packages: ['corechart']});
 The graph directive depends on the graphRender service, make sure you include it:
 <script src="scripts/services/graphrender.js"></script>
 
+### Usage
 Use the graph directive:
 <graph g-data="lineData" g-type="pie"></graph>
 
@@ -50,3 +51,23 @@ $scope.lineData = {
 	}
 
 };
+
+## 02. A spreadsheet directive
+Use the <spreadsheet> directive to display a spreadsheet, example:
+
+<spreadsheet ss-data="ssData"></spreadsheet>
+
+### Requirements
+You must add handsontable to your project: http://handsontable.com/
+
+Use bower to install the required dependencies:
+bower install handsontable --save
+
+### Usage
+Pass an array of arrays containing each row/colum info to the ss-data attribute
+ $scope.ssData = [
+	["", "Ford", "Volvo", "Toyota", "Honda"],
+	["2014", 10, 11, 12, 13],
+	["2015", 20, 11, 14, 13],
+	["2016", 30, 15, 12, 13]
+];

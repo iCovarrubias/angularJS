@@ -32,11 +32,8 @@ angular.module('graphApp')
         }
 
         scope.$watch('gData', function(newVal, oldVal) {
-          // if(angular.isUndefined(oldVal))
-          console.log('watch on action ' + scope.gType, oldVal, newVal);
           if(!angular.isUndefined(newVal))
           {
-            console.log('watch me draw');
             graphRender.draw(canvas, scope.gData, scope.gType);    
           }
         }, true);
