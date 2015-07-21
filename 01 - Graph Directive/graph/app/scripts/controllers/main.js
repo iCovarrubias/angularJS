@@ -21,20 +21,40 @@ angular.module('graphApp')
 				{
 					$scope.$apply(function(){
 						$scope.pieData = {
-						rows: [
-							['Mushrooms', 3],
-							['Onions', 1],
-							['Olives', 1], 
-							['Zucchini', 1],
-							['Pepperoni', 2]
-						],
-						options: {},
-						columns: [
-							["string","Topping"],
-							["number","Slices"]
-						]
-					};
-					});
+							rows: [
+								['Mushrooms', 3],
+								['Onions', 1],
+								['Olives', 1], 
+								['Zucchini', 1],
+								['Pepperoni', 2]
+							],
+							options: {},
+							columns: [
+								["string","Topping"],
+								["number","Slices"]
+							]
+						};
+
+						$scope.barData = $scope.pieData;
+
+						$scope.lineData = {
+				    		columns: [
+				    			["string", 'Framework'],
+				    			["number", 'Users']
+				    		],
+				    		rows: [
+				    			['AngularJS',100],
+				    			['Ember.js',75],
+				    			['Backbone.js',150],
+				    			['Knockout',20],
+				    		],
+				    		options: {
+				    			title: "Top JavaScript MVC Frameworks"
+				    		}
+				    	};
+					});//end $applu
+
+					
 					
 				}
 				else
@@ -58,22 +78,7 @@ angular.module('graphApp')
     	// $scope.barData = $scope.pieData;
 
 
-    	// $scope.lineData = {
-    	// 	columns: [
-    	// 		["string", 'Framework'],
-    	// 		["number", 'Users']
-    	// 	],
-    	// 	rows: [
-    	// 		['AngularJS',100],
-    	// 		['Ember.js',75],
-    	// 		['Backbone.js',150],
-    	// 		['Knockout',20],
-    	// 	],
-    	// 	options: {
-    	// 		title: "Top JavaScript MVC Frameworks"
-    	// 	}
-
-    	// };
+    	
 
 
     	$scope.reset = function(){
