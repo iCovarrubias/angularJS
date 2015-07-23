@@ -80,9 +80,14 @@ angular.module('galleryApp')
           var galSrc = imgSrc[src];
           //get as many images per page allowed
           if(angular.isDefined(galSrc) && angular.isArray(galSrc.imgData)) {
-              //isma TODO: add behavior when dummyData is false
-              page = page % galSrc.totalPages;
-
+              if(galSrc.repeat)
+              {
+                page = page % galSrc.totalPages;
+              } else if(page > galSrc.totalPages)
+              {
+                callback([]);
+                return;
+              }
               var startIdx = page * galSrc.pageSize;
               var endIdx  = startIdx + galSrc.pageSize - 1;
               // console.log(page, startIdx, endIdx);

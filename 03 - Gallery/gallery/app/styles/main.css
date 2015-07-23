@@ -85,6 +85,17 @@ body {
 /* 
   Isma, my styles start here
 */
-img {
+.images-cont img {
   vertical-align: text-top;
+  margin: 2px;
+}
+
+.images-cont img.small-row {
+    max-height: 320px;
+    min-height: 320px;
+}
+
+.images-cont img.med-row {
+    max-height: 480px;
+    min-height: 480px;
 }

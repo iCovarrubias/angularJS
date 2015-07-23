@@ -14,6 +14,7 @@ angular.module('galleryApp')
 				<div>\
 					<button class="btn btn-primary" ng-click="getNextPage()">\
 					More Images!</button>\
+					<span class="label label-info" ng-show="endReached">No more images to show</span> \
 				</div>',
 			restrict: 'E',
 			scope: {
@@ -47,7 +48,72 @@ angular.module('galleryApp')
 			},
 
 			link: function(scope, element, attrs) {
+				var aRow = [];//an array containing a row of images
+				
+				// a helper function that fills each row
+				//isma, this is not working, replaced with function simpleFillRow()
+				function fillRow(imgCnt)
+				{
+					var	totalRowW = imgCnt.prop('scrollWidth'),
+					rowW = totalRowW;
 
+					var totalW = 0;
+					for(var i =0; i < aRow.length; i++)
+					{
+						totalW += aRow[i].width;
+					}
+
+					for(var i = 0; i < scope.pageElems.length; i++)
+					{
+						var img = angular.element("<img />");
+						img.attr("src", scope.pageElems[i].url); //isma, relies on URL existence
+						
+						totalW += scope.pageElems[i].width;
+						aRow.push({img:img, width: scope.pageElems[i].width});
+						rowW -= 4;
+						if(totalW > rowW)
+						{
+							// fillRow(imgCnt, aRow, rowW, totalW);
+							//reset everything
+							if(totalWidth > rowW)
+							{
+								var ratio = rowW / totalWidth;
+								// var smallestImgH = 0;
+								for(var j = 0; j <arr.length; j++)
+								{
+									var img = arr[j].img,
+										width = arr[j].width;
+
+									var resizedWidth = width * ratio;
+									arr[j].width = resizedWidth; //in case we don't fill the row
+									img.attr('width',resizedWidth);
+									element.append(img);
+								}
+								//row filled, so we get rid of the row contents
+								aRow.splice(0, aRow.length);
+							} else {
+								//not enough images to fill the row
+
+							}
+
+							totalW = 0;
+							rowW = totalRowW;
+						}
+					}
+					if(aRow.length > 0)
+					{
+						fillRow(imgCnt, aRow, rowW);
+					}
+				}
+				//A helper function to fill rows of images
+				//this can become a service
+				function simpleFillRow() {
+
+				}
+
+
+
+				//watch each time page elements changes
 				function watcherFn(watchScope){
 					return scope.pageElems;
 				}
@@ -56,13 +122,15 @@ angular.module('galleryApp')
 					if(angular.isDefined(newVal))
 					{
 						console.log(scope.pageElems.length)
-						var imgCnt = element.find('.images-cont');
-						for(var i = 0; i < scope.pageElems.length; i++)
+						if(scope.pageElems.length == 0)
 						{
-							var img = angular.element("<img />");
-							img.attr("src", scope.pageElems[i].url); //isma, relies on the fact that URL exists
-							imgCnt.append(img);							
+							scope.endReached = true;
+						} else {
+							var imgCnt = element.find('.images-cont');
+							fillRow(imgCnt);
+							
 						}
+						
 					}
 
 				});
