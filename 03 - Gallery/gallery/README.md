@@ -119,11 +119,18 @@ schema: {
 	})()
 }
 ### Future improvements
+Establish which method should we call when new images are loaded?
+
+Make the nextPage() method public, so that users of our directive
+decide when to request more images.
 
 ### Problems found during development
-Laying out the page, as image sizes and ratio can vary
+Laying out the page, as image sizes and ratio can vary.
 
 Sources can be quite diverse, which results in more code by the users
-of our directive.
+of our directive (everything programmed with the schema object).
 
-
+There's a strange bug where the page is auto-scrolled on reload, which 
+was fixed by scrolling the page to the top on document ready, this is
+called from the directive's controller and in a real scenario this may 
+interfer with other code that may be positioning the site on purpose.
