@@ -89,7 +89,7 @@ angular.module('galleryApp')
                 {
                   var serverImg = serverData[i]; //a single image from the server
                   
-                  var img = galSrc.schema.getParsedImgData(rawData, i);
+                  var img = galSrc.schema.getParsedImgData(serverImg);
                   
                   //Isma: we could check if the image already exists in galSrc.imgData
                   //  but can result in poor performance
@@ -98,14 +98,14 @@ angular.module('galleryApp')
                 galSrc.imgData = galSrc.imgData.concat(imgData);
               }
 
-              if(angular.isArray(galSrc.imgData)){
+              // if(angular.isArray(galSrc.imgData)){
                 //calculate total pages
                 if(galSrc.imgData.length > galSrc.pageSize)
                 {
                   galSrc.totalPages = Math.ceil((galSrc.imgData.length / galSrc.pageSize));  
                 }
                 callback(galSrc.imgData);
-              }
+              // }
             },function(reason)
             {
               callback(false, reason);

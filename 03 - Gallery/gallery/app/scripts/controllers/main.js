@@ -21,13 +21,13 @@ angular.module('galleryApp')
 				getDataArray: function(serverData) {
 					return serverData;
 				},
-				getParsedImgData: function(serverData, idx) {
+				getParsedImgData: function(anImage) {
 					var result = {
-						url: serverData[idx].url,
-						title: serverData[idx].title,
-						description: serverData[idx].description,
-						width: serverData[idx].width,
-						height: serverData[idx].height
+						url: anImage.url,
+						title: anImage.title,
+						description: anImage.description,
+						width: anImage.width,
+						height: anImage.height
 					};
 					return result;
 				}
@@ -48,9 +48,9 @@ angular.module('galleryApp')
 				getDataArray: function(serverData) {
 					return serverData.items;
 				},
-				getParsedImgData: function(serverData, idx) {
+				getParsedImgData: function(anImage) {
 					return {
-						url: serverData.items[idx].media.m
+						url: anImage.media.m
 					};
 				}
 			}
@@ -77,12 +77,12 @@ angular.module('galleryApp')
 				getDataArray: function(serverData){
 					return serverData.photos.photo;
 				},
-				getParsedImgData: function(serverData, idx){
+				getParsedImgData: function(anImage){
 					// Must return an object with URL, title, description
 					// and if available, add width and height
 					var result = {
-						url: serverData.photos.photo[idx].url_m,
-						title: serverData.photos.photo[idx].title,
+						url: anImage.url_m,
+						title: anImage.title,
 					};
 					return result;
 				},
@@ -90,7 +90,6 @@ angular.module('galleryApp')
 					var page = 1;
 					return function(currentUrl){
 						var result = currentUrl.replace(/\bpage\=\d+\b/,"page=" +(++page));
-						console.log('next page:', result);
 						return result;
 					}
 				})()
@@ -111,9 +110,9 @@ angular.module('galleryApp')
 				getDataArray: function(serverData){
 					return serverData.responseData.results;
 				},
-				getParsedImgData: function(serverData,idx) {
+				getParsedImgData: function(anImage) {
 					return {
-						url: serverData.responseData.results[idx].unescapedUrl
+						url: anImage.unescapedUrl
 					};
 				}
 			}
