@@ -86,5 +86,15 @@ body {
 /*
   Isma my custom styles
 */
+.spoiler-alert {
+  color: red;
+}
 
+.spoiler-alert.spoiler-removed {
+  color: green;
+}
+
+.spoiler-alert.spoiler-hidden {
+  color: blue;
+}
 
