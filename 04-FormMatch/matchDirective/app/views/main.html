@@ -1,0 +1,73 @@
+<div class="well">
+
+	<form name="myForm" novalidate ng-submit="validate()" 
+		ng-class="showValidation?'validate':''">
+		<div class="panel">
+			<!-- MATCH VALUES -->
+			<h3>
+				<span  class="label label-primary">
+					Checking that the value of multiple fields coincide
+				</span>
+			</h3>
+			<div class="form-group">
+				<label>CCV</label>
+				<input name="ccv" type="text" class="form-control"
+				ng-model="data.ccv" validate-type="number"
+				validate-range max-range="999"/> 
+			</div>
+			<div class="form-group">
+				<label>confirm CCV</label>
+				<input name="ccvConfirm" type="password" class="form-control"
+				ng-model="repeatCCV" validate-match="data.ccv"/> 
+			</div>
+			<!-- VALUES IN RANGE -->
+			<h3>
+				<span  class="label label-primary">
+					Values within range
+				</span>
+			</h3>
+			<div class="form-group">
+				<label>A Number between 10 and 80</label>
+				<input name="aNumber" type="text" class="form-control"
+				ng-model="data.aNumber" 
+				validate-range min-range="10" max-range="80" /> 
+			</div>
+			<div class="form-group">
+				<label>A Number with no min-range and no max-range, always valid</label>
+				<input name="aNumber" type="text" class="form-control"
+				ng-model="data.aNumberNoMax" validate-range /> 
+			</div>
+			<div class="form-group">
+				<label>A date between Sept 19, 1986 and today</label>
+				<input name="aDate" type="date" class="form-control"
+				ng-model="data.aDate"
+				validate-range="date" min-range="09/19/1986" max-range="today"/> 
+			</div>
+
+			<!-- VALUES OF TYPE - OK - COMPLETED -->
+			<h3>
+				<span  class="label label-primary">
+					Values of type
+				</span>
+			</h3>
+			<div class="form-group">
+				<label>Alphabetic Characters</label>
+				<input name="alpaChar" type="text" class="form-control"
+				ng-model="data.alphaChars" validate-type /> 
+			</div>
+			<div class="form-group">
+				<label>Numbers</label>
+				<input name="numericNum" type="text" class="form-control"
+				 ng-model="data.numericNumbers" validate-type="number"/> 
+			</div>
+			<!-- CUSTOM ERROR MESSAGES -->
+			<h3>
+				<span  class="label label-danger">
+					Custom error messages
+				</span>
+			</h3>
+		</div>
+		<button type="submit" class="btn btn-primary btn-block">OK</button>
+	</form>
+
+</div>
