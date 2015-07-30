@@ -17,7 +17,14 @@ angular.module('formMatchApp')
       	var minRange = attrs.minRange;
       	var maxRange = attrs.maxRange;
       	var validateType = attrs.validateRange ? attrs.validateRange:"number"; //default number
-      	function validate(myValue)
+      	
+            var errorMsg = attrs.errorMsg || "'Out of range'";
+            var errorTag = angular.element("<span />");
+            errorTag.addClass("label label-danger");
+
+            errorTag.text(scope.$eval(errorMsg));
+
+            function validate(myValue)
       	{
       		//the constant passed to ngModelCtrl.$setValidity
       		var validationErrorKey="range";
@@ -58,16 +65,29 @@ angular.module('formMatchApp')
                         return valid?value: undefined;
       		}
 
+                  var result;
       		if(validateType == "" || validateType == "number")
       		{
-      			return validateNumeric(myValue);
+      			result = validateNumeric(myValue);
       		} else if(validateType == "date") {
-      			return validateDate(myValue);
+      			result = validateDate(myValue);
       		} else {
       			ngModelCtrl.$setValidity(validationErrorKey, false);
       			throw new Error("Invalid type, must be 'number' or 'date'");
       			return undefined;
       		}
+
+                  //err message handling
+                  if(ngModelCtrl.$dirty)
+                  {
+                        if(result)
+                        {
+                              errorTag.remove();
+                        } else {
+                              errorTag.insertAfter(element);
+                        }
+                  }
+                  return result? result: undefined;
 		}
 
 

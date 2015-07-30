@@ -12,13 +12,29 @@ angular.module('formMatchApp')
 		restrict: 'A',
 		require: 'ngModel',
 		link: function(scope, element, attrs, ngModelCtrl) {
+
+			var errorMsg = attrs.errorMsg || '"Error: value doesn\'t match"';
+            var errorTag = angular.element("<span />");
+            errorTag.addClass("label label-danger");
+
+            errorTag.text(scope.$eval(errorMsg));
+
 			function validateEqual(myValue){
 				//myValue is this directive's value
 				//otherValue is the value we are comparing to
 				var otherValue = scope.$eval(attrs.validateMatch); 
 				var valid = (myValue == otherValue);
 				ngModelCtrl.$setValidity('equal',valid);
-				// console.log("validateEqual" , valid);
+				//err message handling
+				if(ngModelCtrl.$dirty)
+				{
+					if(valid)
+					{
+						errorTag.remove();
+					} else {
+						errorTag.insertAfter(element);
+					}
+				}
 				return valid? myValue: undefined;
 			}
 

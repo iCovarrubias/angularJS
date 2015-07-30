@@ -13,12 +13,13 @@
 				<label>CCV</label>
 				<input name="ccv" type="text" class="form-control"
 				ng-model="data.ccv" validate-type="number"
-				validate-range max-range="999"/> 
+				 maxlength="3" minlength="3"/> 
 			</div>
 			<div class="form-group">
 				<label>confirm CCV</label>
 				<input name="ccvConfirm" type="password" class="form-control"
-				ng-model="repeatCCV" validate-match="data.ccv"/> 
+				ng-model="repeatCCV" validate-match="data.ccv"
+				error-msg="'The CCV is not the same'"/> 
 			</div>
 			<!-- VALUES IN RANGE -->
 			<h3>
@@ -30,18 +31,21 @@
 				<label>A Number between 10 and 80</label>
 				<input name="aNumber" type="text" class="form-control"
 				ng-model="data.aNumber" 
-				validate-range min-range="10" max-range="80" /> 
+				validate-range min-range="10" max-range="80" 
+				error-msg="errMsgs.rangeNumber"/> 
 			</div>
 			<div class="form-group">
 				<label>A Number with no min-range and no max-range, always valid</label>
 				<input name="aNumber" type="text" class="form-control"
-				ng-model="data.aNumberNoMax" validate-range /> 
+				ng-model="data.aNumberNoMax" validate-range 
+				error-msg="'Invalid invalid!'"/> 
 			</div>
 			<div class="form-group">
 				<label>A date between Sept 19, 1986 and today</label>
 				<input name="aDate" type="date" class="form-control"
 				ng-model="data.aDate"
-				validate-range="date" min-range="09/19/1986" max-range="today"/> 
+				validate-range="date" min-range="09/19/1986" max-range="today"
+				error-msg="errMsgs.rangeDate" /> 
 			</div>
 
 			<!-- VALUES OF TYPE - OK - COMPLETED -->
@@ -53,12 +57,14 @@
 			<div class="form-group">
 				<label>Alphabetic Characters</label>
 				<input name="alpaChar" type="text" class="form-control"
-				ng-model="data.alphaChars" validate-type /> 
+				ng-model="data.alphaChars" validate-type 
+				error-msg="errMsgs.elErrorAlpha"/> 
 			</div>
 			<div class="form-group">
 				<label>Numbers</label>
 				<input name="numericNum" type="text" class="form-control"
-				 ng-model="data.numericNumbers" validate-type="number"/> 
+				 ng-model="data.numericNumbers" validate-type="number" 
+				 error-msg="'Error: solo se permiten números'"/> 
 			</div>
 			<!-- CUSTOM ERROR MESSAGES -->
 			<h3>
