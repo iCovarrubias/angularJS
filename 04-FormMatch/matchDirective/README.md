@@ -16,24 +16,6 @@ in the form and in the input element.
 You can use CSS to style your elements as with angular's built in validation.
 
 
-## Custom error messages
-Use the error-msg attribute on any directive to add a custom error message.
-You must pass an expression to this parameter.
-
-Example with a string:
-<input name="aNumber" type="text" class="form-control"
-	ng-model="data.aNumber" 
-	validate-range min-range="10" max-range="80" 
-	error-msg="'The number you are setting is out of range'"/> 
-
-Example with a binding:
-<input name="aNumber" type="text" class="form-control"
-	ng-model="data.aNumber" 
-	validate-range min-range="10" max-range="80" 
-	error-msg="errMsgs.rangeNumber"/> 
-
-Where errMsgs.rangeNumber is a string that exists in scope.
-
 ## validate-match directive
 Checks that the value of a field is equal to another.
 
@@ -122,3 +104,24 @@ you need to double escape them:
 If you start your string with a single quote, there's no need to double escape:
 	'"Error: value doesn\'t match"'
 
+
+## Custom error messages
+Use the error-msg attribute on any directive to add a custom error message.
+You must pass an expression to this parameter.
+
+Example with a string:
+<input name="aNumber" type="text" class="form-control"
+	ng-model="data.aNumber" 
+	validate-range min-range="10" max-range="80" 
+	error-msg="'The number you are setting is out of range'"/> 
+
+The error-msg attribute expects an expression, so we need to single quote our string
+inside double quotes or viceversa.
+
+Example with a binding:
+<input name="aNumber" type="text" class="form-control"
+	ng-model="data.aNumber" 
+	validate-range min-range="10" max-range="80" 
+	error-msg="errMsgs.rangeNumber"/> 
+
+Where errMsgs.rangeNumber is a string that exists in scope.
