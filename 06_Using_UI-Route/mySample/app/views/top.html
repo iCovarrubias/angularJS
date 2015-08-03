@@ -1,0 +1,46 @@
+<div class="header">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="navbar-brand" href="#/">{{appTitle}}</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+        <ul class="nav navbar-nav">
+          <!-- <li ui-sref-active="active"><a ui-sref="main">Home</a></li> -->
+          <li ui-sref-active="active"><a ui-sref="charts">Charts</a></li>
+          <li ui-sref-active="active"><a ui-sref="spreadsheets">Spreadsheet</a></li>
+          <li ui-sref-active="active"><a ui-sref="charts_spread">Combination</a></li>
+          <li ui-sref-active="active"><a ui-sref="forms">Forms</a></li>
+          <li ui-sref-active="active"><a ui-sref="spoiler">Spoiler</a></li>
+          <li ui-sref-active="active">
+            <a class="dropdown-toggle" data-toggle="dropdown">Galleries<span class="caret"></span></a>
+            <ul class="dropdown-menu multi-level">
+              <li><a ui-sref="galleries_local">Local</a></li>
+              <li><a ui-sref="galleries_flickr">Flickr</a></li>
+              <li><a ui-sref="galleries_flickr_recent">Flickr Recent</a></li>
+              <li><a ui-sref="galleries_google">Google</a></li>
+            </ul>
+          </li>
+         <!--  <li> Galleries
+            <ul class="nav navbar-nav">
+              <li><a ui-sref="state_scroll">Local</a></li>
+              <li><a ui-sref="state_scroll">Google Images</a></li>
+              <li><a ui-sref="state_scroll">Flickr public</a></li>
+              <li><a ui-sref="state_scroll">Flickr recent</a></li>
+            </ul>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
