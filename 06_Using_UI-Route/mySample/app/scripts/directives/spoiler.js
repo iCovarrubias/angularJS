@@ -11,52 +11,55 @@ angular.module('mySampleApp')
     return {
       restrict: 'A',
       link: function (scope, element, attrs) {
+        var BACKGROUND_IMAGE_URL='url(images/spoiler/spoilers.gif)';
         var wrapper = angular.element('<span />');
           wrapper.addClass('spoiler-alert');
-          wrapper.css('display','inline');
+        
+        element.wrap(wrapper);
+        wrapper = element.parent();
 
-        var originalText = element.text();
+        //wrap
+        wrapper.css({
+          'background-image': BACKGROUND_IMAGE_URL,
+          'background-size': 'contain',
+          'background-repeat': 'repeat-x',
+          'background-origin': 'content-box'
+        });      
+        
+        element.css({
+          opacity: 0
+        });
+
       	if(attrs['spoiler'] == 'censor')
       	{
           wrapper.addClass('spoiler-removed');
-          wrapper.text('spoiler removed...');
-      		//censor, the text will be hidden and unaccessible
-      		element.wrap(wrapper);
-      		element.css('visibility','hidden');
       	} else 
       	{
           //we must make it visible
-          var wrapperText='spoiler...';
           wrapper.addClass('spoiler-hidden');
-          wrapper.text(wrapperText);
-          element.before(wrapper);
 
           //show when hovering over the spoiler... tag
           wrapper.on('mouseover', function(evt){
-            wrapper.text("");
+            wrapper.css('background-image','none');
             element.css({
               'transition': '.5s all',
-              'opacity': 1
+              'opacity': '1'
             });
           });
 
           //hide when leaving the parent the element containing the directive
-          var parent = element.parent();
-          parent.on('mouseleave', function(evt) {
-            wrapper.text(wrapperText);
+          // var parent = element.parent();
+          wrapper.on('mouseleave', function(evt) {
+            // wrapper.text(wrapperText);
+            wrapper.css({
+              'background-image':BACKGROUND_IMAGE_URL});
             element.css({
               'transition': '.5s all',
-              'opacity': 0
+              'opacity': '0'
             });
           });
-      		
-      		element.css({
-            // 'opacity': 0,
-            'background-image': 'images/spoiler/spoilers.gif',
-            'border': '1px solid red'
-          });
+      	
       	}
-        // element.text('this is the spoiler directive');
       }
     };
   });
