@@ -32,9 +32,10 @@ angular.module('mySampleApp')
               valid = /^[a-z]*$/i.test(value);
 	        	} else if (type == "number") {
 	        		//if is NaN then is invalid
-	        		valid = !isNaN(value);
-	        	} else
-	        	{
+              //isma, TODO transform to number
+              valid = !isNaN(value);
+            } else
+            {
               ngModelCtrl.$setValidity(validationErrorKey, valid);
 	        		throw new Error("Invalid type, must be 'alpha' or 'number'");
 	        	}

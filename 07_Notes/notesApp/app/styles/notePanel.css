@@ -1,0 +1,134 @@
+#note-holder {
+		position: absolute;
+		width: 260px;
+		height: 50%;
+		border: 4px solid #032137;
+		overflow: auto;
+		bottom: 8px;
+		right: 8px;
+		font-family: "Trebuchet MS", Arial, sans-serif;
+		background-color: white;
+	}
+	
+#note-holder h1 {
+	font-size: 1.5em; 
+	display: inline-block;
+	float: left;
+}
+
+#add-note, #delete-all-notes {
+	font-weight: bold;
+	font-size: 2em;
+	display: inline-block;
+	padding: 0 5px;
+	margin: 0;
+	cursor: pointer;
+	float: left;
+}
+
+#add-note:hover, #delete-all-notes:hover {
+	transition: text-shadow 300ms;
+	text-shadow: 2px 2px #BBB;
+}
+
+.clear-fix {
+	overflow: hidden;
+	width: auto;
+}
+
+
+
+/*
+NOTE FORM START
+*/
+
+.a-note {
+	background-color: #708EA4;
+	padding: 2px;
+	margin: 0 2px;
+	border-radius: 6px 0 6px 0;
+	border: 1px dashed #032137;
+	display: none;
+	/*text-align: center;*/
+}
+
+.a-note form {
+	margin: 0;
+}
+
+.a-note form input, .a-note form textarea  {
+	margin: 2px 2px;
+	width: 226px;
+}
+
+.a-note form button {
+	font-size: .8em;
+}
+
+.a-note form p {
+	text-align: left;
+	margin: 0 2px;
+}
+
+.greyed
+{
+	color:#CCC;
+}
+
+.retracted-note
+{
+	background-color: #708EA4;
+	font-style: italic;
+	padding: 2px;
+	margin: 2px;
+	color: #123752;
+	border-radius: 6px 0 6px 0;
+}
+
+.extended-note {
+	background-color: #708EA4;
+	padding: 2px;
+	margin: 2px;
+	color: #123752;
+	border-radius: 6px 0 6px 0;
+}
+
+.extended-note input[type="text"] {
+	font-style: italic;
+	border: none;
+	outline: none;
+	width: 180px;
+	background-color: #708EA4;
+	border-bottom: 1px dashed #032137;
+}
+.extended-note textarea {
+	font-size: .9em;
+	min-height: 80px;
+	width: 230px;
+	border: none;
+	overflow: auto;
+	outline: none;
+	background-color: #708EA4;
+	resize: none;
+}
+
+.extended-note button {
+	width: 20px;
+	margin: 0 2px;
+	padding: 1px;
+	border: none;
+	border-radius: 100%;
+	cursor: pointer;
+}
+.extended-note .btn-container {
+	float: right;
+}
+
+.extended-note .date-container {
+	border-top: 1px dashed #032137;
+	font-size: .7em;
+}
+
+/*
+NOTE FORM END
+*/

@@ -27,6 +27,7 @@ angular.module('mySampleApp')
             function validate(myValue)
       	{
       		//the constant passed to ngModelCtrl.$setValidity
+                  //isma, TODO return the correct type
       		var validationErrorKey="range";
       		function validateNumeric(value)
       		{

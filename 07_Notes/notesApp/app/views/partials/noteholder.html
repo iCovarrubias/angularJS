@@ -1,0 +1,32 @@
+<div class="note-panel">
+	<div class="note-panel-head"> 
+		
+	</div>
+	<div class="note-panel-body well">
+		<h1 style="display:inline; vertical-align: middle;">Notes</h1>
+		<button class="btn btn-primary glyphicon" ng-class="formIsShown?'glyphicon-minus':'glyphicon-plus'"
+			ng-click="toggleNoteForm()" title="Create a new note"></button>
+
+		<form name="notePanel" novalidate ng-class="showValidation?'validate':''">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Note Title" 
+					ng-model="note.title"
+					ng-required="true" />
+			</div>
+			<div class="form-group">
+				<textarea class="form-control" rows="5"
+					ng-model="note.contents"></textarea>
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary" type="button" ng-click="saveNote(note)">Save</button>
+				<button class="btn btn-primary" type="button" ng-click="cancelNote()">Cancel</button>
+			</div>
+		</form>
+	</div>
+	<div class="note-panel-footer well">
+		<h2>My Notes <span class="glyphicon glyphicon glyphicon-file"></span></h2> 
+		<div class="note-container"></div>
+	</div>
+	
+
+</div>

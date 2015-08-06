@@ -35,6 +35,14 @@ angular.module('mySampleApp')
 						title: "Top JavaScript MVC Frameworks"
 					}
 				};
+
+				$scope.$watch('ssData', function(newv, oldv){
+					console.log("a")
+					if(oldv!= newv) {
+					console.log("b")
+						$scope.update();
+					}
+				}, true);
     		});
 		}
 

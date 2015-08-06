@@ -1,0 +1,30 @@
+<div class="note">
+	<div class="input-group">
+		<input type="text" class="note-title form-control" disabled="disabled" 
+			ng-model="currentNote.title" 
+			ng-change="onDataChanged()" />
+		<div class="input-group-btn">
+			<button class="btn btn-default" type="button" title="Toggle Note" 
+				ng-click="toggleEditMode()">
+				<span class="glyphicon glyphicon-pencil"></span>
+			</button>
+			<button class="btn btn-default" type="button" title="Delete Note"
+				ng-click="delete()" >
+				<span class="glyphicon glyphicon-remove"></span>
+			</button>
+		</div>
+	</div>
+	<div class="note-body" style="display:none">
+		<textarea  class="form-control" rows="5" 
+			ng-model="currentNote.contents"
+			ng-change="onDataChanged()"></textarea>
+		<div class="date-container">
+			<span class="label label-default">Creation Date: {{currentNote.creationDate}}</span>
+			</br>
+			<span class="label label-default">Last modification: 
+				<span ng-hide="currentNote.lastEditDate">	{{currentNote.creationDate}} </span>
+				<span ng-show="currentNote.lastEditDate">	{{currentNote.lastEditDate}} </span>
+			</span>
+		</div>
+	</div>
+</div>

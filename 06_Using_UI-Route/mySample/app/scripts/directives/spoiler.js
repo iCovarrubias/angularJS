@@ -47,10 +47,14 @@ angular.module('mySampleApp')
             element.css({
               'transition': '.5s all',
               'opacity': 0
-            })
+            });
           });
       		
-      		element.css('opacity',0);
+      		element.css({
+            // 'opacity': 0,
+            'background-image': 'images/spoiler/spoilers.gif',
+            'border': '1px solid red'
+          });
       	}
         // element.text('this is the spoiler directive');
       }
